@@ -6,6 +6,8 @@ services:
         com.github.jrcs.letsencrypt_nginx_proxy_companion.nginx_proxy: "true"
     container_name: ${NGINX_WEB:-nginx-web}
     restart: always
+    environment:
+      - HTTPS_METHOD=redirect
     ports:
       - "${IP:-0.0.0.0}:${DOCKER_HTTP:-80}:80"
       - "${IP:-0.0.0.0}:${DOCKER_HTTPS:-443}:443"
